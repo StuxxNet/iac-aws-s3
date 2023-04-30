@@ -38,18 +38,20 @@ resource "aws_s3_bucket_policy" "bucket_policy_website" {
   bucket = aws_s3_bucket.bucket.id
 
   policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        Sid       = "PublicReadGetObject"
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = [
-            format("%s/index.html", aws_s3_bucket.bucket.arn),
-            format("%s/error.html", aws_s3_bucket.bucket.arn)
+        "Sid" : "PublicReadGetObject",
+        "Effect" : "Allow",
+        "Principal" : "*",
+        "Action" : [
+          "s3:GetObject"
+        ],
+        "Resource" : [
+          "${aws_s3_bucket.bucket.arn}/index.html",
+          "${aws_s3_bucket.bucket.arn}/error.html"
         ]
-      },
+      }
     ]
   })
 }

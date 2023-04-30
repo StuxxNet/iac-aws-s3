@@ -4,9 +4,9 @@ variable "bucket_name" {
 }
 
 variable "object_lock_enabled" {
-    description = "If the bucket should be locked to prevent objects from being deleted or overwritten."
-    type        = bool
-    default     = false
+  description = "If the bucket should be locked to prevent objects from being deleted or overwritten."
+  type        = bool
+  default     = false
 }
 
 variable "force_destroy" {
